@@ -5,8 +5,10 @@
     - [Setup](#setup)
         - [Creating the environment](#creating-the-environment)
         - [Activate the environment](#activate-the-environment)
-        - [Installing Dependencies](#installing-dependencies)
+        - [Updating Dependencies](#updating-dependencies)
         - [Deactivate environment](#deactivate-environment)
+    - [Github action](#github-action)
+    
         
 
 ## What is this?
@@ -55,10 +57,11 @@ $ .venv/bin/Activate.ps1
 > .venv\Scripts\Activate.ps1
 ```
 
-#### Installing Dependencies
-Once the environment is created and activated, use this command to install the development dependencies.
+#### Updating Dependencies
+Once the environment is created and activated, you can install any libraries that's required for your project.
+after you've installed the library you should create `requirements.txt` using this command.
 ```shell
-$ pip install -r dev-requirements.txt
+$ pip freeze > requirements.txt
 ```
 
 #### Deactivate environment
@@ -66,3 +69,6 @@ When environment is activated, you can exit the environment by using this comman
 ```shell
 $ deactivate
 ```
+
+### Github action
+This template also include a github action scrip that when you publish a release it will automatically build Mac, Windows and Linux .tpp file and upload to the release. It basically go to each system and run the build.py that you've created. and publish the result.
