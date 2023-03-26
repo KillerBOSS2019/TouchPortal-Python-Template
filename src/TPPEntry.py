@@ -3,7 +3,7 @@ __version__ = "1.0"
 
 # The unique plugin ID string is used in multiple places.
 # It also forms the base for all other ID strings (for states, actions, etc).
-PLUGIN_ID = "tp.plugin.example.python"
+PLUGIN_ID = "gitago.gsheets"
 
 # Basic plugin metadata
 TP_PLUGIN_INFO = {
