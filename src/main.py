@@ -25,28 +25,29 @@ class ClientInterface(TouchPortalAPI.Client):
         super().__init__(self)
         
         self.pluginId = TPPEntry.PLUGIN_ID
-        self.configFile = self.ParseConfig("plugin_config.ini")
+        self.configFile = self.ParseConfig("plugin_config.txt")
         
         # TP connection settings - These can be left at default
         self.TPHOST = self.configFile["TP CONFIG"]["tphost"]
         self.TPPORT = int(self.configFile["TP CONFIG"]["tpport"])
-        
+
         self.RCV_BUFFER_SZ = int(self.configFile["TP CONFIG"]["rcv_buffer_sz"]) # Incoming data buffer size
         self.SND_BUFFER_SZ = int(self.configFile["TP CONFIG"]["snd_buffer_sz"]) # maximum size of send data buffer ( 1MB )
-        
+
         # Log settings
         self.logLevel = self.configFile["LOGGING"]["loglevel"]
         self.setLogFile(self.configFile["LOGGING"]["logname"])
-        
+    
+
         # Register events
         self.add_listener(TYPES.onConnect, self.onConnect)
         self.add_listener(TYPES.onAction, self.onAction)
         self.add_listener(TYPES.onShutdown, self.onShutdown)
         self.add_listener(TYPES.onListChange, self.onListChange)
-        
+
         # State updater thread
         self.stateUpdaterThread = Thread(target=self.stateUpdate)
-        
+
         # Global Class Variable
         self.variableTest1 = 0
         
@@ -57,7 +58,8 @@ class ClientInterface(TouchPortalAPI.Client):
     def settingsToDict(self, settings):
         # Converts from [{"setting1": "value"}, {"setting1": "value"}] to {"Setting1": "value", "Setting2": "value"}
         return { list(settings[i])[0] : list(settings[i].values())[0] for i in range(len(settings)) }
-    
+
+
     def ParseConfig(self, file):
         config = configparser.ConfigParser()
         config.read(os.path.join(os.path.dirname(os.path.realpath(__file__)), file))
