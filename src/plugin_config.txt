@@ -1,3 +1,12 @@
--d
--l=log.txt
--s=stderr
+[TP CONFIG]
+TPHOST: 127.0.0.1
+TPPORT: 12136
+RCV_BUFFER_SZ: 4096
+SND_BUFFER_SZ: 1048576
+
+[LOGGING]
+LogLevel: INFO
+LogName: myPlugin
+
+[PLUGIN]
+variable1: 29341

@@ -18,7 +18,7 @@ TP_PLUGIN_INFO = {
         "colorLight": "#707ab5"
     },
     "doc": {
-        "repository": "KillerBOSS2019:TouchPortal-API",
+        "repository": "Your-Rep-Name",
         "Install": "example install instruction",
         "description": "example description"
     }
